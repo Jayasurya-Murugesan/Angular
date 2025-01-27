@@ -1,0 +1,12 @@
+download and install node js
+
+cmd -> node --v
+
+install angular cli - to create new angular project or boiler  plate code
+
+npm install -global @angular/cli@latest
+
+cmd -> ng version
+
+
+to create project - ng new proj-name
