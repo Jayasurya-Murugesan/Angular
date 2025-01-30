@@ -1,0 +1,116 @@
+Angular is JS framework for creating SPA
+    to reduce server calls
+    to create dynamic content
+    content will be changed by JS
+
+components will be bundeled and injected into index.html file, when ng serve starte
+
+app-root == app component
+
+component has 4 files -  stle, html, ts, spect.ts -unit testings
+
+component - 
+    create class 
+    decorate with @Component decorator
+        selector -app-root - used as html tag - below will be rendered
+        template - html file
+        style - css file
+===========================================================================================================================================
+Folder Strucutre
+================
+
+Node Modules -
+    third part libraries stored, which are downloaded by npm
+    do not push this to git
+    when npm install is entered in terminal, all necessary packages will be downlaoded into node Modules
+    it know from package.json file
+
+package.json - 
+    project configuration
+    name, version, scripts
+    in dependencies and dev-dependencies all necessary libraries are configured
+
+editor.config
+    standard rules to be followed in development, coding rules
+
+git.ignore
+    to configure, the files that should not be ignored while pushing to repository
+
+angular.json
+    angular related configuration - which file to be loaded when page is loaded, proj name
+
+package-lock.json
+    records all verions of dependencies, and sub dependencies
+
+tsconfig.json
+    settings for compiling TS to JS
+
+src foler
+    contains all source code - components
+
+app folder - 
+    application folder 
+    services, components , Modules
+    all angular apps, will have one component and one Modules
+
+assests - icon, files -only this is publicall accessible
+favion.icon - icon file
+
+index.html - main view file, all dependencies JS injected during ng serve
+
+main.ts - 
+    starting point of application
+    boostrapping app module 
+
+stle.css
+    global css
+===========================================================================================================================================
+5.Booststraping
+===============
+    is a process of initializing or loading the angular application
+    Angular proj -> loads index.html (app-root tag)
+
+ng serve - 
+    compile app in the memor and directly starts it
+    compiles the code and generate bundle and inject into index
+    ng build -> in dist - index.html -> script files injected in this
+    runtime.js - webpack runtime file
+    polfills- for modern browser support
+    main.js - js of application
+    vendor.js -> angular lib and thir party lib
+    styles.csss converted to js and injected
+    webpack - bundler- scan multiple js into one or more bundle js and inject to html
+
+angular.json - > configures entry point of app ->main "main": "src/main.ts"
+
+app.module - root module
+
+Angular Proj -> index.html -> angular.json -> main.ts -> app.module.ts -> app.component.ts -> view template (html file)
+===========================================================================================================================================
+6. TypeScript
+=============
+    superset of JS - anything in JS, also be in TS
+    compiled to JS
+    for typesafety
+    browser wont undestand/exectue TS only JS
+    avoid error while developing or in developing time
+    has type inference
+    object-oriented feature
+===========================================================================================================================================
+7. components
+=============
+    is a piece of site
+    app has atleast one component
+    angular app is tree of components - combining this makes app
+    app component -> Nav component -> (Home component + About component+ contact component)
+creating
+    creat a TS class and export it
+    decorate tht class with @component decorator add selector and view template
+    declare the class in main module file
+    child component should be in parent component folder
+===========================================================================================================================================
+8.View template
+================
+    is a form of html that tells angular how to render the component
+    template or templateURL
+===========================================================================================================================================
