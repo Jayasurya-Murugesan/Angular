@@ -114,3 +114,37 @@ creating
     is a form of html that tells angular how to render the component
     template or templateURL
 ===========================================================================================================================================
+9. style
+=============
+    -> styles : ['a{text-decoration:none;}',other element]
+        cant locate error
+        less maintainable
+    -> styleUrls : ['./header.component.css']
+
+when we add style to a Component only that component will get styld, child component wont be affected by this
+===========================================================================================================================================
+10. apply css style Globally
+============================
+    add style in style.css
+
+===========================================================================================================================================
+11. Using Bootstraps
+====================
+    in terminal -> npm i --save Bootstraps
+    -> add path in angular.json 
+        "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ]
+    -> or @import in css file
+    to uninstall -> npm uninstall bootstrap and remove it in angular.json file
+===========================================================================================================================================
+12. Create component using CLI
+===============================
+    ng generate component component-name
+===========================================================================================================================================
+13. 
+===============================
+
+===========================================================================================================================================
+14.
+===============================
