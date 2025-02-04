@@ -179,5 +179,40 @@ attirbute binding -
     attirbute - do not change dynamically - class, id , href
     [attr.aria-hidden]="true"
 ===========================================================================================================================================
-17.
-===============================
+17. Event Binding
+=================
+    flow of data from view template to component class
+    (HTMLProperty)="method()"
+    $event is created. to get value -> event.target.value
+    input -> (input)=""
+    button -> (click)=""
+===========================================================================================================================================
+18. Two way data Binding
+=================
+    combination of property binding and event binding
+    or ngModel [(ngModel)]="PropName"
+    for using ngModule -> import and register FormsModule in module.ts since its a third party library
+===========================================================================================================================================
+19. Understanding Directives
+============================
+    instructions to DOMto 
+        manipulate
+        change behaviour
+        add/remove/DOM
+    Types
+        component - angular component, it is the only directive with template
+        Attribute - change behaviour/appearance of DOM element, does not add/remove element - ngStle and ngClass
+        Structural - add/remove DOM element. ngIf, ngFor, ngSwitch. need to use asterix before this
+    @Directive({
+        selector : '[atttributSelector]'
+    }) export class name{}
+    <div atttributSelector >something</div>
+===========================================================================================================================================
+20. ngFor
+=========
+    iterates over a collection of data adn creates an HTML element for each of the item from a HTML template
+    strucutral directive
+===========================================================================================================================================
+21. Event Binding
+=================
+===========================================================================================================================================

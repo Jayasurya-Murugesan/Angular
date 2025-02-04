@@ -1,0 +1,11 @@
+<input type="text" [value]="searchText" (input)="updateSearchText($event)">
+<button type="button">Search</button>
+<p>Search Result for: {{searchText}}</p>
+<br><br>
+<input type="text" [(ngModel)]="randomText"> <span> this is 2 way data binding using NgModule </span>
+<input type="text" [value]="randomText">
+
+<div *ngFor="let item of [1,2]">
+    <p>this is directive+{{item}}</p>
+</div>
+<div *ngFor="let con of content">var form class {{con}}</div>

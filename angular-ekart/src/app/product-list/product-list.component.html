@@ -1,18 +1,29 @@
-<p>product-list works!</p>
-song is {{song}}
-<h3>Name : {{product.name}} is {{'Rs'+product.price}} </h3>
+<!-- <div>
+    <p>product-list works!</p>
+    song is {{song}}
+    <h3>Name : {{product.name}} is {{'Rs'+product.price}} </h3>
 
-{{'Rs'+product.price * 30/100}}
-{{getPrice()}}
-{{getPrice().toFixed(2)}}
+    {{'Rs'+product.price * 30/100}}
+    {{getPrice()}}
+    {{getPrice().toFixed(2)}}
 
-ternar operator
-<br>
-{{product.price>0 ? 'costly':'cheap'}}
-----------------------------------------
-<img [src]="product.images" height="100" width="100" [hidden]="!viewImage">
-<button class="btn btn-primary" [disabled]="product.isInStock < 0 " onclick="isClicked()">Submit</button>
+    ternar operator
+    <br>
+    {{product.price>0 ? 'costly':'cheap'}} <br>
+    <button class="btn btn-primary" [disabled]="product.isInStock < 0" type="button">Submit</button> <br>
 
-<input [value]="product.isAvailable">
-or
-<input bind-value="product.isAvailable" [attr.aria-hidden]="true">
+    <img [src]="product.images" height="100" width="100" [hidden]="!viewImage">
+    <button class="btn btn-primary" [disabled]="product.isInStock < 0" type="submit"
+        (click)="isClicked($event)">Toggle</button>
+    <br>
+
+    <input [value]="product.isAvailable">
+    or
+    <input bind-value="product.isAvailable" [attr.aria-hidden]="true"> <br>
+
+    <input (input)="getInputValue($event)" value="maz">
+    <label>{{name}}</label> <br>
+    <button type="button" (click)="onIncrement()">+</button>
+    <span>{{cartValue}}</span>
+    <button type="button" (click)="onDecrement()">-</button>
+</div> -->

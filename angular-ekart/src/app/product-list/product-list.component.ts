@@ -8,6 +8,9 @@ import { Component } from '@angular/core';
 export class ProductListComponent {
   song = 'good';
   viewImage = true;
+  name = 'kim';
+  cartValue: number = 0;
+  total = 10
   product = {
     name: 'apple',
     price: 10,
@@ -19,8 +22,28 @@ export class ProductListComponent {
     return 30.2345;
   }
 
-  isClicked() {
-    this.viewImage = false;
-    alert('hey')
+  isClicked(event: any) {
+    this.viewImage = (this.viewImage == true) ? false : true;
+    //console.log(event)
   }
+  getInputValue(event: any) {
+    this.name = event.target.value;
+  }
+  onIncrement() {
+    if (this.cartValue > this.total - 1) {
+      alert('Max')
+    }
+    else {
+      this.cartValue++;
+    }
+  }
+  onDecrement() {
+    if (this.cartValue < 1) {
+      alert('cant go negative');
+    }
+    else {
+      this.cartValue--;
+    }
+  }
+
 }
