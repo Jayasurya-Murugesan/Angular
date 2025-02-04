@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TopHeaderComponent } from './top-header/top-header.component';
 import { TopMainHeaderComponent } from './header/top-main-header/top-main-header.component';
-import { BottomMainHeaderComponent } from './header/bottom-main-header/bottom-main-header.component'
+import { BottomMainHeaderComponent } from './header/bottom-main-header/bottom-main-header.component';
+import { ProductListComponent } from './product-list/product-list.component'
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { BottomMainHeaderComponent } from './header/bottom-main-header/bottom-ma
     HeaderComponent,
     TopHeaderComponent,
     TopMainHeaderComponent,
-    BottomMainHeaderComponent
+    BottomMainHeaderComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule

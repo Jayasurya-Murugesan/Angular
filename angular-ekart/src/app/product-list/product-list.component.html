@@ -1,0 +1,18 @@
+<p>product-list works!</p>
+song is {{song}}
+<h3>Name : {{product.name}} is {{'Rs'+product.price}} </h3>
+
+{{'Rs'+product.price * 30/100}}
+{{getPrice()}}
+{{getPrice().toFixed(2)}}
+
+ternar operator
+<br>
+{{product.price>0 ? 'costly':'cheap'}}
+----------------------------------------
+<img [src]="product.images" height="100" width="100" [hidden]="!viewImage">
+<button class="btn btn-primary" [disabled]="product.isInStock < 0 " onclick="isClicked()">Submit</button>
+
+<input [value]="product.isAvailable">
+or
+<input bind-value="product.isAvailable" [attr.aria-hidden]="true">

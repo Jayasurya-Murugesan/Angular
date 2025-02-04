@@ -142,9 +142,42 @@ when we add style to a Component only that component will get styld, child compo
 ===============================
     ng generate component component-name
 ===========================================================================================================================================
-13. 
+13. Types of Component selector
 ===============================
-
+we can use selector like a
+    HTML tag -> selector : 'app-root'   -> Mostly used
+    HTML attribute -> selector : '[app-root]'  -> for angular directives
+    CSS class -> selector : '.app-root'
+    CSS id -> selector : '#app-root'
 ===========================================================================================================================================
-14.
+14. Data Binding
+================
+    flow of data 
+    Allows to communicate between a component class and its corresponding view template
+    1.Aone way 
+        from component to view 
+            -> string interpolation {{data}}
+            -> propety binding [propety]=data
+        from view to component
+            -> event binding (data)="expression"
+    2.two way 
+        from component to view AND view to component. its combination of propert and event binding
+            -> [ngModel]
+===========================================================================================================================================
+15. String interpolation
+========================
+    {{getPrice()}}
+    {{'Rs'+product.price * 30/100}}
+    {{product.price>0 ? 'costly':'cheap'}}
+===========================================================================================================================================
+16. Property binding
+===================
+    let ius bind a propety of a DOM object
+    it can let us show or hide DOM element or manipulate it
+    [src]="product.images"  or bind-src="product.images"
+attirbute binding - 
+    attirbute - do not change dynamically - class, id , href
+    [attr.aria-hidden]="true"
+===========================================================================================================================================
+17.
 ===============================
