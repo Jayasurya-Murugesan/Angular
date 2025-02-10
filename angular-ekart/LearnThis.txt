@@ -238,15 +238,40 @@ attirbute binding -
     class name write a typescript which returns boolean
     falsy values = 0, null, undefined, '', false
 ===========================================================================================================================================
-25. 
+25. @Input: Custom Property Binding
+=========================== 
+    communicate between 2 component
+    passing data from parent component to child component
+Product-list (parent) <app-product [product]="">
+product (child) @input() Product;
+===========================================================================================================================================
+26. Understanding @Input decorator
+==================================
+    custom proerty binding is when we bind properties of a componenet class to some TypeScript expression
+    pass data from parent to child
+    @Input() decorator on property
+    use this property as attribute and assign data in where we use selector of the child component
+===========================================================================================================================================
+27. @Output custom event binding
+================================
+    pass data from child to parent component
+    @Output() in child component's property
+===========================================================================================================================================
+28. Non-Related Component Communication
+======================================= 
+    for passing data between sibling component or non related component
+    combination of custom property and event binding
+===========================================================================================================================================
+
 =========================== 
 ===========================================================================================================================================
-26. 
+
 =========================== 
 ===========================================================================================================================================
-27. 
+
 =========================== 
 ===========================================================================================================================================
-28. 
+
 =========================== 
 ===========================================================================================================================================
+

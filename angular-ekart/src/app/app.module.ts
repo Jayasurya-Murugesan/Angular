@@ -7,10 +7,12 @@ import { TopHeaderComponent } from './top-header/top-header.component';
 import { TopMainHeaderComponent } from './header/top-main-header/top-main-header.component';
 import { BottomMainHeaderComponent } from './header/bottom-main-header/bottom-main-header.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { SearchComponent } from './search/search.component'
+import { SearchComponent } from './container/search/search.component'
 import { FormsModule } from '@angular/forms';
 import { ProdListComponent } from './container/prod-list/prod-list.component';
 import { ContainerComponent } from './container/container.component';
+import { ProductComponent } from './container/prod-list/product/product.component';
+import { FilterComponent } from './container/prod-list/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ContainerComponent } from './container/container.component';
     ProductListComponent,
     SearchComponent,
     ProdListComponent,
-    ContainerComponent
+    ContainerComponent,
+    ProductComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

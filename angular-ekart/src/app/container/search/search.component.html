@@ -1,4 +1,4 @@
-<div class="ekart-search-product">
+<div class="ekart--search--product">
     <input type="text" [(ngModel)]="randomText"> <span> this is 2 way data binding using NgModule </span>
     <input type="text" [value]="randomText">
 
@@ -7,10 +7,10 @@
     </div>
     <div *ngFor="let con of content">var form class {{con}}</div>
     <br><br>
-    <input class="ekart-search-product-input" type="text" [value]="searchText" (input)="updateSearchText($event)">
+    <input class="ekart-search-product-input" type="text" [(ngModel)]="searchText" (input)="onSearchTextChange()">
     <button [ngClass]="{'btn':true, 'btn-search': searchText,'btn-search-disabled':!searchText}" type="button"
         [disabled]="!searchText">Search</button>
 </div>
 <div class="ekart-search-result-for">
-    <p *ngIf=" searchText !=''">Search Result for: {{searchText}}</p>
+    <p *ngIf=" searchText !=''">Search Result for: {{searchText}} </p>
 </div>
