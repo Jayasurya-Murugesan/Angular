@@ -247,7 +247,7 @@ product (child) @input() Product;
 ===========================================================================================================================================
 26. Understanding @Input decorator
 ==================================
-    custom proerty binding is when we bind properties of a componenet class to some TypeScript expression
+    custom proerty binding is when we bind properties of a componenet class to some TypeScript expression in html template
     pass data from parent to child
     @Input() decorator on property
     use this property as attribute and assign data in where we use selector of the child component
@@ -262,10 +262,47 @@ product (child) @input() Product;
     for passing data between sibling component or non related component
     combination of custom property and event binding
 ===========================================================================================================================================
+29. Template Reference Variable 
+=========================== 
+    is a variable stores Reference to a DOM element, component or directive on which it is used
+    create a ref var with #text
+    when we use it no need for #
+===========================================================================================================================================
+30. Reference Variable on Component
+===================================
+    in component create a ref 
+    <prod-list #productListComponent></prod-list>
+    <product-detail *ngIf="productListComponent.selectedProduct"></product-detail>
+===========================================================================================================================================
+31. ViewChild() in Angular
+=========================== 
+    @ViewChild decorator is used to quer and get a Reference of the DOM element in the component
+    it returns first matching element
+    @ViewChild('searchInput') searchInputElement;
+    this.searchText = this.searchInputElement.nativeElement.value;
+    optional param - 
+        read - Used to read a different token from the queried elements.
+        static - True to resolve query results before change detection runs, false to resolve after change detection. Defaults to false.
+    ngOnInit will be called after all properties are initialzed
+===========================================================================================================================================
+32. ViewChildren() in Angular
+=============================
+    to get ref of DOM element
+    returns a list of matching element which matches with selector
+    create a ref var in template #inputEl
+    in its component class => @ ViewChildren('inputEl') inputElement:QueryList<ElementRef>
+    we have optional param
+    there is no static
+    only intialized after change detection runs, not work in ngOnInit
+===========================================================================================================================================
+=========================== 
+===========================================================================================================================================
 
 =========================== 
 ===========================================================================================================================================
 
+=========================== 
+===========================================================================================================================================
 =========================== 
 ===========================================================================================================================================
 

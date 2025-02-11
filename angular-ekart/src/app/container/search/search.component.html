@@ -7,9 +7,11 @@
     </div>
     <div *ngFor="let con of content">var form class {{con}}</div>
     <br><br>
-    <input class="ekart-search-product-input" type="text" [(ngModel)]="searchText" (input)="onSearchTextChange()">
-    <button [ngClass]="{'btn':true, 'btn-search': searchText,'btn-search-disabled':!searchText}" type="button"
-        [disabled]="!searchText">Search</button>
+    <input class="ekart-search-product-input" type="text" #searchInput>
+    <!-- [(ngModel)]="searchText" (input)="onSearchTextChange()" -->
+    <button class="btn btn-search" (click)="updateSearchText()">Search</button>
+    <!-- [ngClass]="{'btn':true, 'btn-search': searchText,'btn-search-disabled':!searchText}" type="button" -->
+    <!-- [disabled]="!searchText" -->
 </div>
 <div class="ekart-search-result-for">
     <p *ngIf=" searchText !=''">Search Result for: {{searchText}} </p>
