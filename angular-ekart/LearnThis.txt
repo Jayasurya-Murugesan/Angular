@@ -3,11 +3,11 @@ Angular is JS framework for creating SPA
     to create dynamic content
     content will be changed by JS
 
-components will be bundeled and injected into index.html file, when ng serve starte
+components will be bundeled and injected into index.html file, when ng serve started
 
 app-root == app component
 
-component has 4 files -  stle, html, ts, spect.ts -unit testings
+component has 4 files -  style, html, ts, spect.ts -unit testings
 
 component - 
     create class 
@@ -23,7 +23,7 @@ Node Modules -
     third part libraries stored, which are downloaded by npm
     do not push this to git
     when npm install is entered in terminal, all necessary packages will be downlaoded into node Modules
-    it know from package.json file
+    it knows from package.json file
 
 package.json - 
     project configuration
@@ -62,7 +62,7 @@ main.ts -
     starting point of application
     boostrapping app module 
 
-stle.css
+style.css
     global css
 ===========================================================================================================================================
 5.Booststraping
@@ -71,7 +71,7 @@ stle.css
     Angular proj -> loads index.html (app-root tag)
 
 ng serve - 
-    compile app in the memor and directly starts it
+    compile app in the memory and directly starts it
     compiles the code and generate bundle and inject into index
     ng build -> in dist - index.html -> script files injected in this
     runtime.js - webpack runtime file
@@ -154,15 +154,15 @@ we can use selector like a
 ================
     flow of data 
     Allows to communicate between a component class and its corresponding view template
-    1.Aone way 
+    1.one way 
         from component to view 
             -> string interpolation {{data}}
-            -> propety binding [propety]=data
+            -> propety binding [propety]=data [src]="varName"
         from view to component
             -> event binding (data)="expression"
     2.two way 
         from component to view AND view to component. its combination of propert and event binding
-            -> [ngModel]
+            -> [(ngModel)]
 ===========================================================================================================================================
 15. String interpolation
 ========================
@@ -172,7 +172,7 @@ we can use selector like a
 ===========================================================================================================================================
 16. Property binding
 ===================
-    let ius bind a propety of a DOM object
+    lets us bind a propety of a DOM object
     it can let us show or hide DOM element or manipulate it
     [src]="product.images"  or bind-src="product.images"
 attirbute binding - 
@@ -195,13 +195,13 @@ attirbute binding -
 ===========================================================================================================================================
 19. Understanding Directives
 ============================
-    instructions to DOMto 
+    instructions to DOM to 
         manipulate
         change behaviour
         add/remove/DOM
     Types
         component - angular component, it is the only directive with template
-        Attribute - change behaviour/appearance of DOM element, does not add/remove element - ngStle and ngClass
+        Attribute - change behaviour/appearance of DOM element, does not add/remove element - ngStyle and ngClass
         Structural - add/remove DOM element. ngIf, ngFor, ngSwitch. need to use asterix before this
     @Directive({
         selector : '[atttributSelector]'
@@ -210,7 +210,7 @@ attirbute binding -
 ===========================================================================================================================================
 20. ngFor
 =========
-    iterates over a collection of data adn creates an HTML element for each of the item from a HTML template
+    iterates over a collection of data and creates an HTML element for each of the item from a HTML template
     strucutral directive
 ===========================================================================================================================================
 21. Rendering Complex Types
@@ -225,7 +225,7 @@ attirbute binding -
 23.  ngStyle
 ============
     attribut directive
-    allows to set inline stle in html element using expression
+    allows to set inline style in html element using expression
     [ngStyle]="{fontWeight:'bold', color: prod.is_in_inventory?'green':'red}
     for adding style dynamically
     change look or behaviour of an element
@@ -249,7 +249,7 @@ product (child) @input() Product;
 ==================================
     custom proerty binding is when we bind properties of a componenet class to some TypeScript expression in html template
     pass data from parent to child
-    @Input() decorator on property
+    @Input() decorator on property in child class
     use this property as attribute and assign data in where we use selector of the child component
 ===========================================================================================================================================
 27. @Output custom event binding
@@ -276,7 +276,7 @@ product (child) @input() Product;
 ===========================================================================================================================================
 31. ViewChild() in Angular
 =========================== 
-    @ViewChild decorator is used to quer and get a Reference of the DOM element in the component
+    @ViewChild decorator is used to query and get a Reference of the DOM element in the component (within compo\nenet)
     it returns first matching element
     @ViewChild('searchInput') searchInputElement;
     this.searchText = this.searchInputElement.nativeElement.value;
@@ -295,6 +295,72 @@ product (child) @input() Product;
     there is no static
     only intialized after change detection runs, not work in ngOnInit
 ===========================================================================================================================================
+33 ng-template in Angular
+=========================== 
+    an angular element which wraps an HTML snippet
+    can be used like template and rendered in DOM
+    <ng-template #refVar>
+        <p>test</p>
+    </ng-template>
+    <div *ng-templateOutlet="refVar"></div> --instead of this element, refVar will be rendered (only p tag)
+    instead of div in this, we can use ng-ccontainer
+===========================================================================================================================================
+34 ng-container in Angular
+=========================== 
+    holds structural directives without adding new elements to the DOM
+    allows multiple structural directive
+    <ng-container *ngIf="property">
+        <button (click)="method">button</button>
+     <ng-container>
+===========================================================================================================================================
+35 ng-content in Angular
+========================
+    to write between angular component tag and render it
+    in base html add <ng-content></ng-content> and where we useing the component replace ng-content with a text or html
+    content projection - passing html from parent component to child componenet
+    to differenciate 2 passed values <ng-content select=".class-button">
+    child component -> template:    '<h2>something</h2>    
+                                        <ng-content></ng-content>
+                                    <p>somehting</p>'
+    parent template ->  <app-child>
+                            <p>this will be projected</p>
+                        </app-child>
+===========================================================================================================================================
+36 ContentChild() in Angular 
+============================
+    using html component of 
+    used to access a Reference of a DOM element or a component or directive from the projected content in the child component class
+    create a ref in parent componenet <app-kart #ref><p>aonf</p>
+in child class
+    @contentChild('ref')
+    paraRef:ElementRef;
+===========================================================================================================================================
+37. ContentChildren() 
+=====================
+    used to access  ALL matching Reference of a DOM element or a component or directive from the projected content in the child  child component class
+    in child component class based on the given selector
+    @ContentChildren('para') paraElement :QueryList<ElementRef>
+===========================================================================================================================================
+38. Component initializing
+==========================
+    when we use selector in template, constructor of that class is called
+    implecit parameterless constructor
+    explicit - constructor(){}
+    when constructor is class value for input is assigned with initial value, not the value passed from parent class
+    when constructor is called, 
+        input properties are not updated and not available
+        child componenet of the componenet is not constructed
+        projected content will not be available
+    once component is removed from DOM, we can say componenet is destroyed
+    app starts - creates and render root componenet
+    then it creates and renders child componenet -> forms a tree of components
+    once angular loads the component it starts the process fo rendering view
+    to do this, it needs to check the input properties, evaluate the data binding and expressions and render the projected content
+    angular then also removed the component from the DOM, when no longer needed
+    angular lets us know when theses events happens using life cycle hook
+life cycle hooks are methods that angular invoked on director or a component when they create/update or destroy them
+    ngOnChanges, ngOnInit, ngDoCheck, ngAfterContentInit, ng AfterConetentChecked, ngAfterViewInit, ngAfterViewChecked, ngDestroy
+===========================================================================================================================================
 =========================== 
 ===========================================================================================================================================
 
@@ -307,8 +373,26 @@ product (child) @input() Product;
 ===========================================================================================================================================
 
 =========================== 
+
 ===========================================================================================================================================
 
 =========================== 
+
+===========================================================================================================================================
+
+=========================== 
+
+===========================================================================================================================================
+
+=========================== 
+
+===========================================================================================================================================
+
+=========================== 
+
+===========================================================================================================================================
+
+=========================== 
+
 ===========================================================================================================================================
 
