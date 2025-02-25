@@ -358,13 +358,33 @@ in child class
     to do this, it needs to check the input properties, evaluate the data binding and expressions and render the projected content
     angular then also removed the component from the DOM, when no longer needed
     angular lets us know when theses events happens using life cycle hook
-life cycle hooks are methods that angular invoked on director or a component when they create/update or destroy them
+life cycle hooks are methods that angular invokes on directive or a component when they create/update or destroy them
     ngOnChanges, ngOnInit, ngDoCheck, ngAfterContentInit, ng AfterConetentChecked, ngAfterViewInit, ngAfterViewChecked, ngDestroy
 ===========================================================================================================================================
-=========================== 
+39.ngOnChanges
+===========
+    Change detection is mechanism by which, angular keeps the view template in symc woth the componenet class
+    runs change detection cycle happens when,
+        http req made
+        DOM even happens
+        time events happens
+        @input propety updated and later its changes
+    first life cycle hook
+    it gets executed at the start when a new componenet is created and its input bound properties are updated
+    interface - OnChanges
+    ngOnChanges(changes:SimpleChanges){}
+    if there is no changes in previous value and current value, this wont get called
+    for arrays ref is stored, so ngOnChanges hook wont be called again. if ref change, ngOnChanges will get invoked
 ===========================================================================================================================================
-
-=========================== 
+40.ngOnInit
+===========
+    called after OnChanges is called and completed
+    invoked on first change cycle detecgtion
+    called once
+    best for initializing variable
+    interface OnInit
+    when this is called, child component or projected content or view are not available
+    so property decorated with @ViewChild, @ViewChildren, @contentChild, @ContentChildren will not be available to use
 ===========================================================================================================================================
 
 =========================== 
