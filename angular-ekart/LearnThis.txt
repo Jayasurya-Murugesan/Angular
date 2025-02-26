@@ -363,10 +363,10 @@ life cycle hooks are methods that angular invokes on directive or a component wh
 ===========================================================================================================================================
 39.ngOnChanges
 ===========
-    Change detection is mechanism by which, angular keeps the view template in symc woth the componenet class
-    runs change detection cycle happens when,
+    Change detection is mechanism by which, angular keeps the view template in symc with the componenet class
+    change detection cycle happens when,
         http req made
-        DOM even happens
+        DOM event happens
         time events happens
         @input propety updated and later its changes
     first life cycle hook
@@ -379,17 +379,29 @@ life cycle hooks are methods that angular invokes on directive or a component wh
 40.ngOnInit
 ===========
     called after OnChanges is called and completed
-    invoked on first change cycle detecgtion
+    invoked only on first change cycle detecgtion
     called once
     best for initializing variable
     interface OnInit
     when this is called, child component or projected content or view are not available
     so property decorated with @ViewChild, @ViewChildren, @contentChild, @ContentChildren will not be available to use
 ===========================================================================================================================================
-
-=========================== 
+41. ngDoCheck
+=============
+    called after ngOnChanges and ngOnInit
+    invoked on every change detection cycle, even if there is no change in input bound properties
+    ex - button clicked but that btn doesnt do anything, in this case also it will get invoked
+    when angular fails to detect an change made to input bound properties, we can use this to implement custom change detection
+    interface - DoCheck
 ===========================================================================================================================================
-=========================== 
+42. ngAfterContentInit
+======================
+    called after ngDoCheck
+    called after components projected content has been full initialzed and injected into ng-content in child component's template
+    interface - AfterContentInit
+    even if we dont have projected content, it will get called
+    just before this called, properties with contentChild, ContentChildren will be initialized
+    called once during first change detection cycle. after that if projected content changes, this will not get called
 ===========================================================================================================================================
 
 =========================== 
