@@ -403,13 +403,25 @@ life cycle hooks are methods that angular invokes on directive or a component wh
     just before this called, properties with contentChild, ContentChildren will be initialized
     called once during first change detection cycle. after that if projected content changes, this will not get called
 ===========================================================================================================================================
-
-=========================== 
-
+43. ngAfterContentChecked
+===================
+    called during every change detection cycle, even if there is no change
+    called after angular has finished initializing and chcecking projected content
+    before raising this hook, properties decorated with @contentChild and @ContentChildren are updated
+    this hook is raised even if there is no projected content in the component
+    called whenever the projected content is initialized and checked and updated
+    this and above are component only not directive
 ===========================================================================================================================================
-
+44. ngAfterViewInit
 =========================== 
-
+    called after the components view template and all its child component view template are full initialized
+    interface - ngAfterViewInit
+    called once
+    before this hook is called, properties decorated with ViewChild and ViewChildren are updated
+    called once during first change detection cycle
+    when this hook called, all the life cycle hooks of child component and its directive are executed/ processed 
+    and child componet is completel ready
+    this hook is componenet only hook, cant use it in directive
 ===========================================================================================================================================
 
 =========================== 
