@@ -14,7 +14,7 @@ import { ContainerComponent } from './container/container.component';
 import { ProductComponent } from './container/prod-list/product/product.component';
 import { FilterComponent } from './container/prod-list/filter/filter.component';
 import { ProductDetailComponent } from './container/product-detail/product-detail.component';
-
+import { SetBackground } from './CustomDirective/SetBackground.directive'
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,8 @@ import { ProductDetailComponent } from './container/product-detail/product-detai
     ContainerComponent,
     ProductComponent,
     FilterComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    SetBackground
   ],
   imports: [
     BrowserModule,

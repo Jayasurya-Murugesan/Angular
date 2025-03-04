@@ -402,6 +402,7 @@ life cycle hooks are methods that angular invokes on directive or a component wh
     even if we dont have projected content, it will get called
     just before this called, properties with contentChild, ContentChildren will be initialized
     called once during first change detection cycle. after that if projected content changes, this will not get called
+    component only not directive class
 ===========================================================================================================================================
 43. ngAfterContentChecked
 ===================
@@ -423,19 +424,66 @@ life cycle hooks are methods that angular invokes on directive or a component wh
     and child componet is completel ready
     this hook is componenet only hook, cant use it in directive
 ===========================================================================================================================================
+45. ngAfterViewChecked
+======================
+    gets called after it checks and updates the components view template and its child components view templates
+    called during first change and following cycles, even if there is no change in view
+    whenever a view of component or child componenet changed
+    this is componenet onl, not on directive
+    when this hook called, all the life cycle hooks of child component and its directive are executed/ processed 
+    angular updates properties with @viewChild and @Viewchildren before this
+===========================================================================================================================================
+46. ngOnDestroy
+===============
+    called just beofre component is removed from DOM
+    cleanup - unsubscribe, detach event handler
+    last hook
+===========================================================================================================================================
+47. Custom Attribute Directive
+==============================
+    Attribute - change the behaviour of element
+    create a file like -
+        @Directive({ selector: '[setBackround]' })
+        export class SetBackground {
+        constructor(element: ElementRef) {
+            element.nativeElement.style.backgroundColor = 'red'
+        }
+    register in app.module
+    in view <span setBackround>{{product.category}}</span>
 
+}
+===========================================================================================================================================
+48. Render 2
+=========================== 
+    do not update DOM directly using native element 
+    view template, change detection cycle are by passed
+    script injection attack
+    creates a layer abstraction between DOM and code for change
+        @Directive({ selector: '[setBackround]' })
+        export class SetBackground {
+            constructor(private element: ElementRef, private renderer: Renderer2) {}
+        ngOnInit() {
+            this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
+        }}
+===========================================================================================================================================
 =========================== 
 
 ===========================================================================================================================================
-
 =========================== 
 
 ===========================================================================================================================================
-
 =========================== 
 
 ===========================================================================================================================================
+=========================== 
 
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
 =========================== 
 
 ===========================================================================================================================================
