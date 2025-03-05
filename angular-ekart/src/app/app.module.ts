@@ -14,7 +14,10 @@ import { ContainerComponent } from './container/container.component';
 import { ProductComponent } from './container/prod-list/product/product.component';
 import { FilterComponent } from './container/prod-list/filter/filter.component';
 import { ProductDetailComponent } from './container/product-detail/product-detail.component';
-import { SetBackground } from './CustomDirective/SetBackground.directive'
+import { SetBackground } from './CustomDirective/SetBackground.directive';
+import { Highlight } from './CustomDirective/Highlight.directive';
+import { Apphover } from './CustomDirective/hover.directive'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,10 @@ import { SetBackground } from './CustomDirective/SetBackground.directive'
     ProductComponent,
     FilterComponent,
     ProductDetailComponent,
-    SetBackground
+    SetBackground,
+    Highlight,
+    Apphover
+
   ],
   imports: [
     BrowserModule,
