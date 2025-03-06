@@ -486,7 +486,7 @@ life cycle hooks are methods that angular invokes on directive or a component wh
     2. in directive @HostBinding propName=''
        @hostlistener('focus')log(){}
 ===========================================================================================================================================
-52. Poerty binding in directives
+52. Propert binding in directives
 ================================ 
     in ts Input() inputprop=''
     in html [inputProp]="'val'"
@@ -494,20 +494,41 @@ life cycle hooks are methods that angular invokes on directive or a component wh
     @input('directiveName')obj:{'prop1','prop2'}
     in html <p [directiveName]={prop1:'val1',prop2:'val2'}>
 ===========================================================================================================================================
-=========================== 
+53. Conditional attibute Directive
+==================================
+ using directive Conditionally
+ use setter in @Input()
 
+ @Input() set disableProduct(disable: boolean) {
+        if (disable) {
+            this.renderer.addClass(this.element.nativeElement, 'disable-prod')
+        }
+    }
 ===========================================================================================================================================
-=========================== 
-
+54. Custom class directive
+========================== 
+    propert name cannot have -
+    [ngClass]={cssClass:true}
+    selector has to present to add prop on the hosst element
+    if selector and prop name same we can use it like [className]={}
 ===========================================================================================================================================
-=========================== 
-
+55. Custom Style Directive
+========================== 
+    [ngStyle]={backgroundColor: active?'green':'red'}
+    @Input('selecctorName') set propName (style:objects){}
 ===========================================================================================================================================
-=========================== 
-
+56. Structural directive
+========================
+    behind the scenes, for *ngIf='', agular will, 
+        create a ng-template 
+        move the content to this 
+        add [ngIf]='' or [ngIfElse]=''
 ===========================================================================================================================================
-=========================== 
-
+57. Custom Structural directive
+=============================== 
+    inject templateRef [view], viewContainerRef [ref of ng template]
+    this.viewContainerRef.createEmbededView(this.templateRef)
+    this.viewContainerRef.clear();
 ===========================================================================================================================================
 =========================== 
 
