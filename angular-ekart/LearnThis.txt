@@ -530,20 +530,48 @@ life cycle hooks are methods that angular invokes on directive or a component wh
     this.viewContainerRef.createEmbededView(this.templateRef)
     this.viewContainerRef.clear();
 ===========================================================================================================================================
-=========================== 
+58. ngSwitch Directive
+======================
+    Structural directive
+    [ngSwitch]="PropName" outer div
+    *ngSwitchCase="PropValue"
+    *ngSwitchDeftault 
+===========================================================================================================================================
+59. View Encapsulation
+======================
+    Hiding data and behaviour from outside world
+    componenet CSS styles are encapsulted into the components view and do not effect the rest of the application 
+    can be added in componenet class under styleUrls
+    ViewEncapsulation.None -no Encapsulation
+    ViewEncapsulation.Emulated - angular add unique attribute to html element <button attr_something=""> CSS - .button[attr_something]
+    ViewEncapsulation.ShadowDOM - creates a seperate DOM, does not get affected by main DOM
+===========================================================================================================================================
+60. Service in Angular
+======================
+    Business logic in one service file that can be referenced in other components
+    can use this to pass data between two unrelated components
+===========================================================================================================================================
+61. Creating & Using Services
+============================= 
+        Services folder
+        name.service.ts
+        export class NameService{
+            method(){}
+        }
+        in components -> let serviceObj=new NameService();
+        serviceObj.method();
 
 ===========================================================================================================================================
-=========================== 
-
-===========================================================================================================================================
-=========================== 
-
-===========================================================================================================================================
-=========================== 
-
-===========================================================================================================================================
-=========================== 
-
+62. Dependency injection
+======================== 
+    providing dependencies using external sources rather than creating the instance of dependencies
+    in @componenet provider: [ServiceName]
+    export class HeaderComponent{
+        serviceObj=ServiceName;
+        constructor(serviceObj:ServiceName){
+            this.serviceObj=serviceObj;
+        }
+    }
 ===========================================================================================================================================
 =========================== 
 
