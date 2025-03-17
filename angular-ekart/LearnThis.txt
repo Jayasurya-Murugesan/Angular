@@ -565,6 +565,7 @@ life cycle hooks are methods that angular invokes on directive or a component wh
 62. Dependency injection
 ======================== 
     providing dependencies using external sources rather than creating the instance of dependencies
+    when we provide a service on multiple components each component get its own instance of that service
     in @componenet provider: [ServiceName]
     export class HeaderComponent{
         serviceObj=ServiceName;
@@ -572,6 +573,56 @@ life cycle hooks are methods that angular invokes on directive or a component wh
             this.serviceObj=serviceObj;
         }
     }
+
+    or
+    subService=Inject(ServiceName);
+===========================================================================================================================================
+63. Hierarchical Dependency Injection
+===================================== 
+    when we provide a dependency on component, same instance will be given to a component and all its child and its child component
+    to implement this just remove provider array in its child component
+    Dependency override - child component's provider will override parent component's provider
+    Root componenet - when we provide a Dependency on root component same instance of that dependency is injected to all components directive and services
+    Module Injector - we can also inject service from module class. in this case same instance of the dependency will be available throughout the app (singleton)
+===========================================================================================================================================
+64. Hierarchical Injection Practical Use Case
+=========================== 
+    implement provider at module level so that data from services will be same for throughout the app
+    if we have multiple provider for same service it will get overriden from parent to child and we loose the data
+===========================================================================================================================================
+65. Injecting Service into Another Service
+==========================================
+    @Injectable()
+    export class UserService{}
+
+    add dependent class in app module provider array 
+
+    or @Injectable({
+        ProvidedIn:'root'
+    })
+    no need to add it in provider array in the app module
+    in all services add @Injectable as recommended by angular
+===========================================================================================================================================
+66. Angular Injection Token
+=========================== 
+    in app module
+    [UserService]-> {
+                        provide:'USER_SERVICE', 
+                        useClass:UserService
+                    }
+    provide - stores unique identifier(token), it can be string or token
+    useClass - which class needs to be instantiated for token
+    if we mention like above, in constructor injection -> @Inject('USER_SERVICE')
+    or export const USER_TOKEN = new InjectionToken<UserService>{'USER_SERVICE'}
+    {provide:USER_TOKEN ,useClass:UserService}
+     @Inject(USER_TOKEN)
+===========================================================================================================================================
+67. Component Interaction using Services
+========================================
+    in an event bind a method
+    in that method call event
+    that event will emit the data
+    in other component ngOnInit subscribe to the event and using call back get datat (data:user)=>{this.prop =data}
 ===========================================================================================================================================
 =========================== 
 
@@ -600,4 +651,50 @@ life cycle hooks are methods that angular invokes on directive or a component wh
 =========================== 
 
 ===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+
 
