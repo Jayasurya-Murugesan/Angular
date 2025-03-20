@@ -586,7 +586,7 @@ life cycle hooks are methods that angular invokes on directive or a component wh
     Module Injector - we can also inject service from module class. in this case same instance of the dependency will be available throughout the app (singleton)
 ===========================================================================================================================================
 64. Hierarchical Injection Practical Use Case
-=========================== 
+=============================================
     implement provider at module level so that data from services will be same for throughout the app
     if we have multiple provider for same service it will get overriden from parent to child and we loose the data
 ===========================================================================================================================================
@@ -620,10 +620,206 @@ life cycle hooks are methods that angular invokes on directive or a component wh
 67. Component Interaction using Services
 ========================================
     in an event bind a method
-    in that method call event
+    in that method call event and pass data
     that event will emit the data
-    in other component ngOnInit subscribe to the event and using call back get datat (data:user)=>{this.prop =data}
+    in other component ngOnInit subscribe to the event and using call back get data (data:user)=>{this.prop =data}
 ===========================================================================================================================================
+68. What is an Observable
+========================= 
+    represents a data stream that can emit values over time
+    a function that converts data into observable one
+    to handle async data (also we can use promise)
+    JS single threaded
+    streaming of data - instead of sending complete response in one go, respond in chunks
+    RxJs library - reactive extension javascript 
+Promise - 
+    returns data or error obj
+    cannot handle stream of data
+    resolved after first chunk of response
+    will return data even if no code is using the data
+Observable Paattern -   
+        observable      ->               observer              ->   handler
+      event emitter            event listener, subscriber         event handler
+    next, error, completion              subscribe            next(), error(), completion()
+===========================================================================================================================================
+69. Creating & Using an Observable
+==================================
+    obj= new Observable((observer)=>{
+        observer.next([1,2,3,4,5,6])
+    })
+
+    3 optional call back function next, error, complete
+
+    method(){
+        this.obj.subscribe((value)=>{
+            this.someVar=value;
+        })
+    }
+===========================================================================================================================================
+70. Error & Completion of Observable
+=========================== 
+   in emitter observer.error(new Error('msg')) 
+   once error is emitted, it cannot emit any values or complete signal
+   method(){
+        this.obj.subscribe((value)=>{
+            this.someVar=value;
+        },
+        (err)=> {alert(err.message);},
+        ()=>{alert('completed')})
+    }
+
+    observer.complete()
+    once complete is emitted, no further values will be emitted
+latest way of passing call back
+    method(){
+        this.obj.subscribe(
+            next:(value)=>{
+            this.someVar=value;
+        },
+        error(err){alert(err.message);},
+        complete(){alert('completed')})
+    }
+===========================================================================================================================================
+71. RxJS of() & from() Operator
+=========================== 
+of - creates an observable the arguments the we pass into it.
+    each arg is emitted sepetately one after another and send complete signal at end
+    of(this.array)
+    returns array
+from - takes a single arg which can be iterated over and converts in to observable
+    var=from(this.array1)
+    returns element of array one by one
+===========================================================================================================================================
+72. The fromEvent Operator
+==========================
+    allows create an observable from DOM element
+    fromevent(this.btnRef.nativeElement,'click).subscribe((data)=>{console.log(data)});
+===========================================================================================================================================
+73. RxJS map & filter Operator
+============================== 
+Map - used to transform the data from observable
+    to transform we use pipe method
+
+    obs=from([1,2,3,4,5])
+    transformedData = this.obs.pipe(map((val)=>{
+        return val*5;
+    }))
+    and then subscribe to this obs obj
+Filter - used to filter data emited by source obs based on a condition
+    filterObs=this.transformedData.pipe(filter((val)=>{
+            return val%4===0;
+    }))
+pipe- with pipe we can chain the operators
+    filterObs = this.obs.pipe(map((val)=>{
+        return val*5;
+    }),
+    filter((val)=>{
+            return val%4===0;
+    }))
+===========================================================================================================================================
+74. Subjects in RxJS
+====================
+    special tpe of obesrvable that allows values to be multicasted to many observers
+    similar to event emitter
+    used for cross component Communication
+    CreateTask=new Subject<string>();
+
+    method(val:string){
+        this.CreateTask.next(val);
+    }
+
+===========================================================================================================================================
+75. Observable vs Subjects
+=========================
+Observable - 
+    unicast
+    in math.rnadom - 2 subscriber will get 2 data
+    data provider
+Subject -
+    multicast
+    in math.rnadom - 2 subscriber will get same data
+    data provider + data consumer
+
+    const sub=new subject();
+    const data = ajax('url');
+
+    sub.subscribe((res)=> console.log(res))
+    sub.subscribe((res)=> console.log(res))
+    sub.subscribe((res)=> console.log(res))
+
+    data.subscribe(sub);
+===========================================================================================================================================
+76. Behavior Subject
+====================
+    a subject which can hold an initial value which it emits if no new value is emitted.
+    it emits an intial value or last emitted value for a new subscriber
+    const sub=new behavoirSubject<number>(100)
+===========================================================================================================================================
+77. Replay Subject
+==================
+    it replays old values to new subs when the subscribe
+    it will store every value it emits in a buffer, it will emit them to the new subs in the order it recieved them, configure this trhought below
+    buffersize- num of item that keeps in buffer, default - max
+    windowtime- amout of time to keep value in buffer, default max
+    const sub=new ReplaSubject(2,1000) 1s
+===========================================================================================================================================
+78. Async Subject
+=================
+    only passes the last emitted value to all its subscribers once the complete method is called on it
+
+===========================================================================================================================================
+79. Promise vs Observable
+=========================
+Promise - 
+        native to js
+        returns the data as soon as promise is created
+        async data
+Pbservale - 
+        need to use RxJS library
+        call back only get executed when the subscriber is called
+        sync or async data
+===========================================================================================================================================
+80. Unsubscribe from an Observable
+==================================
+    interval(1000) returns seq values from 0 - max
+    subscribe() returns a observable so assign subscriber to a var
+    then this.var.unsubscribe();
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+=========================== 
+
+===========================================================================================================================================
+
+
 =========================== 
 
 ===========================================================================================================================================
@@ -681,20 +877,3 @@ life cycle hooks are methods that angular invokes on directive or a component wh
 =========================== 
 
 ===========================================================================================================================================
-=========================== 
-
-===========================================================================================================================================
-=========================== 
-
-===========================================================================================================================================
-=========================== 
-
-===========================================================================================================================================
-=========================== 
-
-===========================================================================================================================================
-=========================== 
-
-===========================================================================================================================================
-
-
